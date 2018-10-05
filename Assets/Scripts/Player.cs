@@ -14,6 +14,8 @@ public class Player : MonoBehaviour {
     public Transform m_GroundCheck;
     public Transform m_CeilingCheck;
     public LayerMask m_WhatIsGround;
+    public Joystick joystick;
+
     private float move, x;
     private bool jump;
     private bool crouching = false;
@@ -22,7 +24,8 @@ public class Player : MonoBehaviour {
     private Animator m_anim;
     private float m_MaxSpeed = 10f;
     [Range(0, 1)] [SerializeField] private float m_CrouchSpeed = .36f;	// Use this for initialization
-	void Awake () {
+	
+    void Awake () {
         rb = GetComponent<Rigidbody2D>();
         m_anim = GetComponent<Animator>();
         b_coll = GetComponent<BoxCollider2D>();
@@ -30,8 +33,27 @@ public class Player : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-        x = Input.GetAxis("Horizontal");
-        //print(rb.velocity.y);
+        // x = Input.GetAxis("Horizontal");
+        // x = joystick.Horizontal;
+        if (joystick.Horizontal >= .4f) {
+            x = 1f;
+        } else if (joystick.Horizontal <= -.4f) {
+            x = -1f;
+        } else {
+            x = 0f;
+        }
+
+        float y = joystick.Vertical;
+        
+        if (y >= .6f) {
+            jump = true;
+        }
+        if (y <= -.6f) {
+            Crouching(true);
+        } else {
+            Crouching(false);
+        }
+        /*
         if (Input.GetKeyDown(KeyCode.Space)) {
             jump = true;
         }
@@ -40,6 +62,7 @@ public class Player : MonoBehaviour {
         } else if ((Input.GetButtonUp("Crouch"))) {
             Crouching(false);
         }
+        */
 	}
 
     void FixedUpdate () {

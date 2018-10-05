@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/Warped create prefabs.unity
+- path: Assets/Scenes/Warped.unity
   isLoaded: 1
   isActive: 1
