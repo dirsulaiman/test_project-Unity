@@ -44,7 +44,7 @@ public class Player : MonoBehaviour {
         }
 
         float y = joystick.Vertical;
-        
+
         if (y >= .6f) {
             jump = true;
         }
@@ -104,9 +104,14 @@ public class Player : MonoBehaviour {
         transform.Rotate(0f, 180f, 0f);
     }
 
-    private void Crouching (bool crouch) {
+    public void Crouching (bool crouch) {
+        Debug.Log("Tunduk oi");
         m_anim.SetBool("Crouch", crouch);
         this.crouch = crouch;
         b_coll.enabled = !crouch;
+    }
+
+    public void Jumping () {
+        jump = true;
     }
 }
