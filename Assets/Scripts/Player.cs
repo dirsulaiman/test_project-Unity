@@ -42,7 +42,7 @@ public class Player : MonoBehaviour {
         } else {
             x = 0f;
         }
-
+        /*
         float y = joystick.Vertical;
 
         if (y >= .6f) {
@@ -53,7 +53,7 @@ public class Player : MonoBehaviour {
         } else {
             Crouching(false);
         }
-        /*
+        
         if (Input.GetKeyDown(KeyCode.Space)) {
             jump = true;
         }

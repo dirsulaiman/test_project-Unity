@@ -91,6 +91,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 20
   rb: {fileID: 50001282439123228}
+  damage: 40
+  impactEffect: {fileID: 1473625048454486, guid: 284f05ab582ef494a9ab1dd8bc1e76ae,
+    type: 2}
 --- !u!212 &212262403132943014
 SpriteRenderer:
   m_ObjectHideFlags: 1

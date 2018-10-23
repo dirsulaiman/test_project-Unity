@@ -53,8 +53,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Other\Scripts\Bullet.cs" />
+     <Compile Include="Assets\Other\Scripts\CharacterController2D.cs" />
+     <Compile Include="Assets\Other\Scripts\Enemy.cs" />
+     <Compile Include="Assets\Other\Scripts\PlayerMovement.cs" />
+     <Compile Include="Assets\Other\Scripts\PrefabWeapon.cs" />
+     <Compile Include="Assets\Other\Scripts\RayCastWeapon.cs" />
+     <Compile Include="Assets\Scripts\AnimationDestroy.cs" />
      <Compile Include="Assets\Scripts\Bullet.cs" />
      <Compile Include="Assets\Scripts\ButtonController.cs" />
+     <Compile Include="Assets\Scripts\Enemy.cs" />
      <Compile Include="Assets\Scripts\PlatformerCharacter2D.cs" />
      <Compile Include="Assets\Scripts\Player.cs" />
      <Compile Include="Assets\Scripts\Weapon.cs" />
