@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour {
 
-	public float speed = 20f;
+	public float speed = 18f;
 	public Rigidbody2D rb;
-	public int damage = 40;
+	public int damage = 18;
 	public GameObject impactEffect;
 
 	void Start () {
@@ -16,7 +16,7 @@ public class Bullet : MonoBehaviour {
 
 	private void OnTriggerEnter2D(Collider2D other) {
 		
-		Debug.Log(other.tag);
+		//Debug.Log(other.tag);
 		//Destroy(this.gameObject);
 		if (GetComponent<Collider2D>().gameObject.tag == "Wall") {
 			Debug.Log("enter");

@@ -1,14 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour {
 
+    public int health = 100;
+    public int point = 0;
     public bool m_Grounded;
     public bool m_FacingRight = true;
     public float m_JumpForce = 400f;
     public Rigidbody2D rb;
     public bool crouch;
+
+    public Text HpText;
+    //public Text PointText;
+    public Text ScorText;
 
     public float k_GroundedRadius = .1f;
     public Transform m_GroundCheck;
@@ -29,10 +36,13 @@ public class Player : MonoBehaviour {
         rb = GetComponent<Rigidbody2D>();
         m_anim = GetComponent<Animator>();
         b_coll = GetComponent<BoxCollider2D>();
+        HpText.text = health.ToString();
+        ScorText.text = point.ToString();
 	}
 
 	// Update is called once per frame
 	void Update () {
+        ScorText.text = point.ToString();
         // x = Input.GetAxis("Horizontal");
         // x = joystick.Horizontal;
         if (joystick.Horizontal >= .4f) {
@@ -90,7 +100,8 @@ public class Player : MonoBehaviour {
         }
 
         if (jump && m_Grounded) {
-            rb.AddForce(new Vector2 (rb.velocity.x, m_JumpForce));
+            //rb.AddForce(new Vector2 (rb.velocity.x, m_JumpForce));
+            rb.AddForce(Vector2.up* m_JumpForce);
             m_Grounded = false;
             m_anim.SetBool("Ground", false);
             //rb.velocity = new Vector2 (0f, m_JumpForce);
@@ -113,5 +124,14 @@ public class Player : MonoBehaviour {
 
     public void Jumping () {
         jump = true;
+    }
+
+    public void TakeDamage (int damage) {
+        this.health -= damage;
+        HpText.text = health.ToString();
+    }
+
+    public void GetPoint (int point) {
+        this.point += point;
     }
 }

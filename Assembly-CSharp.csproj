@@ -60,11 +60,14 @@
      <Compile Include="Assets\Other\Scripts\PrefabWeapon.cs" />
      <Compile Include="Assets\Other\Scripts\RayCastWeapon.cs" />
      <Compile Include="Assets\Scripts\AnimationDestroy.cs" />
+     <Compile Include="Assets\Scripts\BoardManager.cs" />
      <Compile Include="Assets\Scripts\Bullet.cs" />
      <Compile Include="Assets\Scripts\ButtonController.cs" />
+     <Compile Include="Assets\Scripts\CollectableObject.cs" />
      <Compile Include="Assets\Scripts\Enemy.cs" />
      <Compile Include="Assets\Scripts\PlatformerCharacter2D.cs" />
      <Compile Include="Assets\Scripts\Player.cs" />
+     <Compile Include="Assets\Scripts\Rotataor.cs" />
      <Compile Include="Assets\Scripts\Weapon.cs" />
      <Compile Include="Assets\Virtual Joystick Pack\Examples\2D Example\Player2DExample.cs" />
      <Compile Include="Assets\Virtual Joystick Pack\Examples\3D Example\Player3DExample.cs" />

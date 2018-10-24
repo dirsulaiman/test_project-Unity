@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AnimationDestroy : MonoBehaviour {
 
-	public float delay = .1f;
+	public float delay = 0f;
  
      // Use this for initialization
     void Start () {
