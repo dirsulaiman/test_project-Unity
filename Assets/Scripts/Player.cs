@@ -11,11 +11,12 @@ public class Player : MonoBehaviour {
     public bool m_FacingRight = true;
     public float m_JumpForce = 400f;
     public Rigidbody2D rb;
-    public bool crouch;
 
     public Text HpText;
     //public Text PointText;
     public Text ScorText;
+    public GameObject camera;
+    public BoardManager boardManager; 
 
     public float k_GroundedRadius = .1f;
     public Transform m_GroundCheck;
@@ -25,12 +26,10 @@ public class Player : MonoBehaviour {
 
     private float move, x;
     private bool jump;
-    private bool crouching = false;
     private BoxCollider2D b_coll;
 
     private Animator m_anim;
     private float m_MaxSpeed = 10f;
-    [Range(0, 1)] [SerializeField] private float m_CrouchSpeed = .36f;	// Use this for initialization
 	
     void Awake () {
         rb = GetComponent<Rigidbody2D>();
@@ -38,11 +37,17 @@ public class Player : MonoBehaviour {
         b_coll = GetComponent<BoxCollider2D>();
         HpText.text = health.ToString();
         ScorText.text = point.ToString();
+        boardManager = camera.GetComponent<BoardManager>();
 	}
 
 	// Update is called once per frame
 	void Update () {
         ScorText.text = point.ToString();
+        if (health <= 0) {
+            boardManager.GameOver(false);
+        } else if (point >= 100) {
+            boardManager.GameOver(true);
+        }
         // x = Input.GetAxis("Horizontal");
         // x = joystick.Horizontal;
         if (joystick.Horizontal >= .4f) {
@@ -52,27 +57,6 @@ public class Player : MonoBehaviour {
         } else {
             x = 0f;
         }
-        /*
-        float y = joystick.Vertical;
-
-        if (y >= .6f) {
-            jump = true;
-        }
-        if (y <= -.6f) {
-            Crouching(true);
-        } else {
-            Crouching(false);
-        }
-        
-        if (Input.GetKeyDown(KeyCode.Space)) {
-            jump = true;
-        }
-        if (Input.GetButtonDown("Crouch")) {
-            Crouching(true);
-        } else if ((Input.GetButtonUp("Crouch"))) {
-            Crouching(false);
-        }
-        */
 	}
 
     void FixedUpdate () {
@@ -84,14 +68,9 @@ public class Player : MonoBehaviour {
                 m_Grounded = true;
                 m_anim.SetBool("Ground", true);
         }
-        /*
-        if (Physics2D.OverlapCircle(m_CeilingCheck.position, k_GroundedRadius, m_WhatIsGround)){
-            crouching = true;
-            //print("on crouch");
-        }
-        */
+       
         m_anim.SetFloat("Speed", Mathf.Abs(x));
-        move = crouch ? x*m_CrouchSpeed : x;
+        move = x;
         rb.velocity = new Vector2 (move*m_MaxSpeed, rb.velocity.y);
         if (x>0 && !m_FacingRight) {
             Flip();
@@ -100,14 +79,12 @@ public class Player : MonoBehaviour {
         }
 
         if (jump && m_Grounded) {
-            //rb.AddForce(new Vector2 (rb.velocity.x, m_JumpForce));
             rb.AddForce(Vector2.up* m_JumpForce);
             m_Grounded = false;
             m_anim.SetBool("Ground", false);
             //rb.velocity = new Vector2 (0f, m_JumpForce);
         }
         jump = false;
-        //Debug.Log(m_Grounded);
     }
 
     private void Flip () {
@@ -115,12 +92,6 @@ public class Player : MonoBehaviour {
         transform.Rotate(0f, 180f, 0f);
     }
 
-    public void Crouching (bool crouch) {
-        Debug.Log("Tunduk oi");
-        m_anim.SetBool("Crouch", crouch);
-        this.crouch = crouch;
-        b_coll.enabled = !crouch;
-    }
 
     public void Jumping () {
         jump = true;

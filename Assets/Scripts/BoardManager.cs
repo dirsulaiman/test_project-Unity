@@ -2,14 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class BoardManager : MonoBehaviour {
 
-	public Text successText;
-	public Text failedText;
+	public GameObject successText;
+	public GameObject failedText;
 	public Text health;
 	public Text points;
-	public bool showStatus = false;
+	public Text healthText;
+	public Text pointsText;
+	public bool showStatus = true;
 
 	void Start () {
 		successText.gameObject.SetActive(false);
@@ -21,7 +24,7 @@ public class BoardManager : MonoBehaviour {
 		
 	}
 
-	void GameOver (bool win) {
+	public void GameOver (bool win) {
 		if (win) {
 			successText.gameObject.SetActive(true);
 		} else {
@@ -29,15 +32,26 @@ public class BoardManager : MonoBehaviour {
 		}
 	}
 
-	public void toggleStatus() {
+	public void ToggleStatus() {
 		if (showStatus) {
 			health.gameObject.SetActive(false);
 			points.gameObject.SetActive(false);
+			healthText.gameObject.SetActive(false);
+			pointsText.gameObject.SetActive(false);
+			showStatus = false;
 		} else if (!showStatus) {
 			health.gameObject.SetActive(true);
 			points.gameObject.SetActive(true);
+			healthText.gameObject.SetActive(true);
+			pointsText.gameObject.SetActive(true);
+			showStatus = true;
 		}
 	}
 
-
+	public void PlayAgain () {
+		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+	}
+	public void MainMenu () {
+		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex-1);
+	}
 }
