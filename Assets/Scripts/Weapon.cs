@@ -6,7 +6,12 @@ public class Weapon : MonoBehaviour {
 
 	public Transform firePoint;
 	public GameObject bulletPrefab;
-	// Update is called once per frame
+	public AudioClip shootEffect;
+	private AudioSource source;
+
+	void Awake () {
+		source = GetComponent<AudioSource>();
+	}
 
 	void Update () {
 		if (Input.GetButtonDown("Fire1")){
@@ -15,6 +20,6 @@ public class Weapon : MonoBehaviour {
 	}
 	public void Shoot () {
 		Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-		//Debug.Log("shoot oi");
+		source.PlayOneShot(shootEffect, 1f);
 	}
 }

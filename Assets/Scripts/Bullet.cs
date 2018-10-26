@@ -8,19 +8,19 @@ public class Bullet : MonoBehaviour {
 	public Rigidbody2D rb;
 	public int damage = 18;
 	public GameObject impactEffect;
+	//public AudioClip impact;
+	//private AudioSource source;
 
 	void Start () {
 		rb.velocity = transform.right * speed;
-		//Debug.Log("Shoot");
+		
 	}
 
 	private void OnTriggerEnter2D(Collider2D other) {
-		
-		//Debug.Log(other.tag);
-		//Destroy(this.gameObject);
+		//source = GetComponent<AudioSource>();
+		//source.PlayOneShot(impact, 1f);
 		if (GetComponent<Collider2D>().gameObject.tag == "Wall") {
 			Debug.Log("enter");
-			//Destroy(this.gameObject);
 		}
 		
 		Enemy enemy = other.GetComponent<Enemy>();
@@ -29,7 +29,6 @@ public class Bullet : MonoBehaviour {
 		}
 		Instantiate(impactEffect, transform.position, transform.rotation);
 		Destroy(this.gameObject);
-		//Destroy(impactEffect);
 
 	}
 	

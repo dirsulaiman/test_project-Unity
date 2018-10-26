@@ -1,0 +1,45 @@
+{
+    "logs": [
+        {
+            "outputFile": "/home/diss/Documents/unity_project/test_project/Temp/gradleOut/build/intermediates/incremental/mergeReleaseResources/merged.dir/values/values.xml",
+            "map": [
+                {
+                    "source": "/home/diss/Documents/unity_project/test_project/Temp/gradleOut/src/main/res/values/styles.xml",
+                    "from": {
+                        "startLines": "5,2,7",
+                        "startColumns": "0,0,0",
+                        "startOffsets": "190,53,288",
+                        "endLines": "6,4,10",
+                        "endColumns": "8,8,8",
+                        "endOffsets": "286,188,513"
+                    },
+                    "to": {
+                        "startLines": "3,5,8",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "104,204,342",
+                        "endLines": "4,7,11",
+                        "endColumns": "8,8,8",
+                        "endOffsets": "199,337,564"
+                    }
+                },
+                {
+                    "source": "/home/diss/Documents/unity_project/test_project/Temp/gradleOut/src/main/res/values/strings.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "2",
+                        "startOffsets": "53",
+                        "endColumns": "46",
+                        "endOffsets": "97"
+                    },
+                    "to": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "48",
+                        "endOffsets": "99"
+                    }
+                }
+            ]
+        }
+    ]
+}

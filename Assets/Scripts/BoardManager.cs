@@ -12,11 +12,15 @@ public class BoardManager : MonoBehaviour {
 	public Text points;
 	public Text healthText;
 	public Text pointsText;
-	public bool showStatus = true;
+	private bool showStatus = true;
+	//public AudioClip backgroundSound;
+	//private AudioSource source;
 
 	void Start () {
 		successText.gameObject.SetActive(false);
 		failedText.gameObject.SetActive(false);
+		//source = GetComponent<AudioSource>();
+		//source.PlayOneShot(backgroundSound);
 	}
 	
 	// Update is called once per frame
@@ -52,6 +56,6 @@ public class BoardManager : MonoBehaviour {
 		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 	}
 	public void MainMenu () {
-		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex-1);
+		SceneManager.LoadScene("MainMenu");
 	}
 }

@@ -9,6 +9,8 @@ public class Enemy : MonoBehaviour {
 	public Rigidbody2D rb;
 	public float move = 0;
 	public bool m_FacingRight = false;
+	//public AudioClip impact;
+	//private AudioSource source;
 
 
 	private void FixedUpdate() {
@@ -56,6 +58,8 @@ public class Enemy : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Die () {
+		//source = GetComponent<AudioSource>();
+		//source.PlayOneShot(impact, 1f);
 		Instantiate(deathEffect, transform.position, Quaternion.identity);
 		Destroy(gameObject);
 	}

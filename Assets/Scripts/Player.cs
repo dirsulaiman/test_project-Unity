@@ -26,7 +26,6 @@ public class Player : MonoBehaviour {
 
     private float move, x;
     private bool jump;
-    private BoxCollider2D b_coll;
 
     private Animator m_anim;
     private float m_MaxSpeed = 10f;
@@ -34,7 +33,6 @@ public class Player : MonoBehaviour {
     void Awake () {
         rb = GetComponent<Rigidbody2D>();
         m_anim = GetComponent<Animator>();
-        b_coll = GetComponent<BoxCollider2D>();
         HpText.text = health.ToString();
         ScorText.text = point.ToString();
         boardManager = camera.GetComponent<BoardManager>();
