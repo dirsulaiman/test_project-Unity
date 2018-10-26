@@ -1,4 +1,4 @@
-#Fri Oct 26 18:24:14 WITA 2018
+#Fri Oct 26 20:05:50 WITA 2018
 base.0=/home/diss/Documents/unity_project/test_project/Temp/gradleOut/build/intermediates/transforms/dex/release/0
 path.0=classes.dex
 renamed.0=classes.dex

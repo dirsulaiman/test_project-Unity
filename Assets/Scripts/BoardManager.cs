@@ -13,14 +13,13 @@ public class BoardManager : MonoBehaviour {
 	public Text healthText;
 	public Text pointsText;
 	private bool showStatus = true;
-	//public AudioClip backgroundSound;
-	//private AudioSource source;
+	private AudioSource source;
 
 	void Start () {
 		successText.gameObject.SetActive(false);
 		failedText.gameObject.SetActive(false);
-		//source = GetComponent<AudioSource>();
-		//source.PlayOneShot(backgroundSound);
+		source = GetComponent<AudioSource>();
+		source.Play();
 	}
 	
 	// Update is called once per frame
@@ -29,6 +28,7 @@ public class BoardManager : MonoBehaviour {
 	}
 
 	public void GameOver (bool win) {
+		source.Pause();
 		if (win) {
 			successText.gameObject.SetActive(true);
 		} else {

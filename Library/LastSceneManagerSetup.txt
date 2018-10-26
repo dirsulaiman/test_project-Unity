@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/MainMenu.unity
+- path: Assets/Warped.unity
   isLoaded: 1
   isActive: 1
